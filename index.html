@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EduLoan — Apply for Educational Loans</title>
+  <meta name="description" content="Responsive educational loan application portal for students applying for study-abroad funding." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>EL</div>
+        <div>
+          <h1>EduLoan</h1>
+          <p class="lead">Apply for study-abroad funding — fast, secure, and accessible.</p>
+        </div>
+      </div>
+      <nav aria-label="primary">
+        <a href="#apply" class="small">Apply</a>
+        <a href="#features" class="small">Features</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card hero" aria-labelledby="hero-title">
+        <div>
+          <h2 id="hero-title">Start your application</h2>
+          <p class="small">Complete the form on the right — we’ll calculate estimated EMI and eligibility instantly.</p>
+        </div>
+
+        <div class="kpi" aria-hidden>
+          <div><strong>25%</strong><div class="muted">Faster load (opt.)</div></div>
+          <div><strong>100+</strong><div class="muted">Institutions supported</div></div>
+          <div><strong>4.8/5</strong><div class="muted">Avg customer rating</div></div>
+        </div>
+
+        <article id="features" class="card" aria-labelledby="features-title">
+          <h3 id="features-title">Why choose EduLoan</h3>
+          <ul>
+            <li>Accessible form with semantic HTML and ARIA where needed.</li>
+            <li>Reusable components via HTML templates for cards & notifications.</li>
+            <li>Performance: minimal DOM updates and deferred JS.</li>
+          </ul>
+        </article>
+
+        <section class="card" aria-labelledby="how-title">
+          <h3 id="how-title">How it works</h3>
+          <ol>
+            <li>Fill basic personal and course details.</li>
+            <li>See instant eligibility & EMI estimate.</li>
+            <li>Submit documents securely (simulated).</li>
+          </ol>
+        </section>
+      </section>
+
+      <aside class="aside">
+        <form id="apply" class="card" aria-labelledby="apply-title" novalidate>
+          <h3 id="apply-title">Loan application</h3>
+
+          <label for="fullname">Full name</label>
+          <input id="fullname" name="fullname" type="text" required autocomplete="name" placeholder="Your full name" />
+
+          <div class="row">
+            <div class="col">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            </div>
+            <div class="col">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+91 98765 43210" />
+            </div>
+          </div>
+
+          <label for="country">Country of study</label>
+          <select id="country" name="country" required>
+            <option value="">Choose country</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>Germany</option>
+          </select>
+
+          <label for="courseValue">Course fee (in INR)</label>
+          <input id="courseValue" name="courseValue" type="number" min="0" value="1500000" />
+
+          <label for="loanAmount">Desired loan amount (INR)</label>
+          <input id="loanAmount" name="loanAmount" type="number" min="0" value="1000000" />
+
+          <div class="row">
+            <div class="col">
+              <label for="tenure">Tenure (years)</label>
+              <select id="tenure" name="tenure">
+                <option>1</option>
+                <option selected>3</option>
+                <option>5</option>
+                <option>7</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="interest">Interest rate (annual %)</label>
+              <input id="interest" name="interest" type="number" step="0.01" value="8.5" />
+            </div>
+          </div>
+
+          <div class="loan-preview card" aria-live="polite">
+            <div class="loan-row"><div class="muted">Estimated EMI</div><div id="emi">—</div></div>
+            <div class="loan-row"><div class="muted">Total payable</div><div id="total">—</div></div>
+            <div class="loan-row"><div class="muted">Eligibility</div><div id="eligibility">—</div></div>
+          </div>
+
+          <label for="note" class="small">Upload documents (simulated)</label>
+          <input id="note" name="note" type="file" aria-describedby="upload-help" />
+          <div id="upload-help" class="small muted">We accept PDFs and images. Files are not actually uploaded in this demo.</div>
+
+          <button id="estimateBtn" type="button">Estimate & Validate</button>
+          <button id="submitBtn" type="submit" disabled>Submit application</button>
+          <div id="msg" class="small muted" role="status" aria-live="polite"></div>
+        </form>
+      </aside>
+    </main>
+
+    <footer>EduLoan — Accessible & responsive demo · 2024–2025</footer>
+  </div>
+
+  <!-- Templates -->
+  <template id="toast-template">
+    <div role="alert" class="card toast" style="padding:12px;border-radius:10px"></div>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
